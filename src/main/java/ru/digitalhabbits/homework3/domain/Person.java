@@ -3,10 +3,7 @@ package ru.digitalhabbits.homework3.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Accessors(chain = true)
@@ -28,4 +25,8 @@ public class Person {
 
     @Column
     private Integer age;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 }

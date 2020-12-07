@@ -3,10 +3,9 @@ package ru.digitalhabbits.homework3.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Accessors(chain = true)
@@ -22,4 +21,7 @@ public class Department {
 
     @Column(nullable = false, columnDefinition = "BOOL NOT NULL DEFAULT FALSE")
     private boolean closed;
+
+    @OneToMany(mappedBy = "department")
+    private Set<Person> persons = new HashSet<Person>();
 }
